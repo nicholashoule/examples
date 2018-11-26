@@ -66,8 +66,8 @@ env_loop_check() {
 ###########################################
 get_github_env_repo() {
 	# GitHub project
-	declare -r -l github_project_dev='https://raw.githubusercontent.com/nicholashoule/examples/files/dev/env.conf'
-	declare -r -l github_project_prod='https://raw.githubusercontent.com/nicholashoule/examples/files/prod/env.conf'
+	declare -r -l github_project_dev='https://raw.githubusercontent.com/nicholashoule/examples/master/files/dev/env.conf'
+	declare -r -l github_project_prod='https://raw.githubusercontent.com/nicholashoule/examples/master/files/prod/env.conf'
 	declare -r github_key='x000000000000000000000000000000000000000000000'
 
 	# GitHub: Development: dev
