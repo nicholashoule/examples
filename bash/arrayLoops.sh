@@ -68,13 +68,14 @@ get_github_env_repo() {
 	# GitHub project
 	declare -r -l github_project_dev='https://raw.githubusercontent.com/nicholashoule/examples/master/files/dev/env.conf'
 	declare -r -l github_project_prod='https://raw.githubusercontent.com/nicholashoule/examples/master/files/prod/env.conf'
-	declare -r github_key='x000000000000000000000000000000000000000000000'
+	#declare -r github_key='x000000000000000000000000000000000000000000000'
 
 	# GitHub: Development: dev
 	if [[ -n "${github_project_dev}" ]]; then
 		declare -g -a CI_PROJECTS_DEV
 		printf "[%s][%s] %s\\n" "ENV" "${todaydate}" "GitHub: ${github_project_dev}"
-		readarray -t CI_PROJECTS_DEV < <(curl -s -H "Authorization: token ${github_key}" "${github_project_dev}")
+		readarray -t CI_PROJECTS_DEV < <(curl -s "${github_project_dev}")
+		#readarray -t CI_PROJECTS_DEV < <(curl -s -H "Authorization: token ${github_key}" "${github_project_dev}")
 		#printf "%s\\n" "${CI_PROJECTS_DEV[@]}"
 	fi
 
@@ -82,7 +83,8 @@ get_github_env_repo() {
 	if [[ -n "${github_project_prod}" ]]; then
 		declare -g -a CI_PROJECTS_PROD
 		printf "[%s][%s] %s\\n" "ENV" "${todaydate}" "GitHub: ${github_project_prod}"
-		readarray -t CI_PROJECTS_PROD < <(curl -s -H "Authorization: token ${github_key}" "${github_project_prod}")
+		readarray -t CI_PROJECTS_PROD < <(curl -s "${github_project_prod}")
+		#readarray -t CI_PROJECTS_PROD < <(curl -s -H "Authorization: token ${github_key}" "${github_project_prod}")
 		#printf "%s\\n" "${CI_PROJECTS_PROD[@]}"
 	fi
 
